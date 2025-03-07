@@ -48,6 +48,22 @@ public class Database {
                     + "WHERE id = 6");
             statement.executeUpdate(delete);
             System.out.println("✅ Data Deleted!");
+            
+            String print = ("Select * \r\n"
+                    + "FROM Flexi");
+            ResultSet resultSet = statement.executeQuery(print);
+
+            while (resultSet.next()) {
+                System.out.println(
+                    resultSet.getInt("id") + " | " +
+                    resultSet.getString("FirstName") + " | " +
+                    resultSet.getString("LastName") + " | " +
+                    resultSet.getString("Address") + " | " +
+                    resultSet.getString("Occupation") + " | " +
+                    resultSet.getDate("Date")
+                );
+            }
+            
 
         } catch (SQLException e) {
             System.out.println("❌ SQL Error: " + e.getMessage());
